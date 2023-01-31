@@ -27,7 +27,7 @@ services:
     container_name: backend
     build: ./backend
     volumes:
-      - ./webapps:/usr/local/tomcat/webapps
+      - ./backend/webapps:/usr/local/tomcat/webapps
       -  ./m2repo:/root/.m2/repository
     ports:
       - "8099:8080"
@@ -37,7 +37,7 @@ services:
     image: jenkins/jenkins:jdk17
     volumes:
      - ./jenkins:/var/jenkins_home
-     - ./webapps:/artifacts
+     - ./backend/webapps:/artifacts
     ports:
         - 8050:8080
         - 50000:50000
