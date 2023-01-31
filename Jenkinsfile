@@ -29,7 +29,8 @@ pipeline {
         stage ('deploy') {
             steps {
                 dir('./backend'){
-                    docker cp 'tartget/ROOT.war' './webapps'
+
+                    echo 'working'
                 }
             }
             
