@@ -30,6 +30,7 @@ pipeline {
         stage ('deploy') {
             steps {
                 dir('./backend'){
+                    sh 'pwd'
                     sh 'cp ./target/ROOT.war /artifacts' 
                     sh 'pwd'
                 }
