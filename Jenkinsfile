@@ -8,25 +8,30 @@ pipeline {
     stages {
         stage ('clean') {
             steps {
-                sh 'mvn -f ./backend/pom.xml  clean' 
-            
+                sh 'rm ./backend/target/ROOT.war'
+                dir('./backend') {
+                    sh 'rm target/ROOT.war'
+                    sh 'mvn clean'
+                }
         }
         }
         stage ('test') {
             steps {
-                sh 'mvn test' .
+                sh 'mvn test -f ./backend' 
             }
             
         }
-        stage ('package') {
+         stage ('packagin in to war') {
             steps {
-                sh 'mvn -f ./backend/pom.xml  package' 
+                sh 'mvn war:war -f ./backend' 
             }
             
         }
         stage ('deploy') {
             steps {
-                sh 'mvn  -f ./backend/pom.xml  deploy' 
+                dir('./backend'){
+                    docker cp ROOT.war './webapps'
+                }
             }
             
         }
