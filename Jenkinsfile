@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage ('clean') {
             steps {
-                sh 'rm ./backend/target/ROOT.war'
                 dir('./backend') {
                     sh 'rm target/ROOT.war'
                     sh 'mvn clean'
