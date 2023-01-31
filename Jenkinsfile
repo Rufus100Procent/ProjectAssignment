@@ -16,12 +16,14 @@ pipeline {
         stage ('test') {
             steps {
                 sh 'mvn test -f ./backend' 
+                sh 'pwd'
             }
             
         }
          stage ('packagin in to war') {
             steps {
                 sh 'mvn war:war -f ./backend' 
+                sh 'pwd'
             }
             
         }
