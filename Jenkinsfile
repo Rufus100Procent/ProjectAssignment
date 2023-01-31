@@ -9,7 +9,7 @@ pipeline {
         stage ('clean') {
             steps {
                 dir('./backend') {
-                    sh 'rm target/ROOT.war'
+                    sh 'rm -r target/ROOT.war'
                     sh 'mvn clean'
                 }
         }
