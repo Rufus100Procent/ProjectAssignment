@@ -31,7 +31,7 @@ pipeline {
             steps {
                 dir('./backend'){
                     sh 'pwd'
-                    sh 'cp ./target/ROOT.war ~/artifacts' 
+                    sh 'cp ./target/ROOT.war /artifacts' 
                     sh 'pwd'
                 }
             }
